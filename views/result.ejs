@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("partials/head.ejs") %>
+</head>
+<body class="text-center">
+    <h1 class="bg-primary text-white p-4">Famous Quotes</h1>
+    <!-- <form action="/searchByKeyword">
+        <label>Keyword: <input type="text" name="keyword"></label> 
+        <button class="btn btn-outline-success">Success</button>
+    </form> -->
+    <a href="/"><Button>Back</Button></a>
+    <br>
+    <% for(let i of quotes) { %>
+        "<%= i.quote %>"<br>
+        <a class="authors" href="#" authorId="<%= i.authorId %>"><%= i.firstName %> , <%= i.lastName %></a>
+        <br><br>
+    <% } %>
+    <dialog id="authorModal">
+        <div id="authorId">
+            <h2 id="authorName"></h2><br>
+            <img id="authorImg"><br>
+            <span id="dob"></span><br>
+            <span id="dod"></span><br>
+            <span id="bp"></span><br>
+            <span id="prof"></span><br>
+            <span id="gender"></span><br>
+            <p id="bio"></p>
+        </div>
+        <button id="closeModal"> Close </button>
+    </dialog>
+    <script src="/js/results.js"></script>
+    <%- include("partials/footer.ejs") %>
+</body>
+</html>

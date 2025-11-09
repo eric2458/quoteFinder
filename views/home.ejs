@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("partials/head.ejs") %>
+</head>
+<body class="text-center" class="">
+    <h1 class="bg-danger text-white p-4">Famous Quotes</h1>
+    <form id="searchByKeywordForm" action="/searchByKeyword">
+        <label>Keyword: <input type="text" name="keyword" id="keyword"></label> 
+        <button class="btn btn-outline-danger">Search</button>
+    </form>
+    <h3 id="errorCode"></h1>
+    <form action="/searchByAuthor">
+        <label>Author: 
+            <select name="authorId">
+                <% for (row of rows) { %>
+                    <option value="<%=row.authorId%>"><%=row.firstName%> <%=row.lastName%></option>
+                <% } %>
+            </select>
+        </label> 
+        <button class="btn btn-outline-danger">Search</button>
+    </form>
+    <form action="/searchByCategory">
+        <label>Category: 
+            <select name="category">
+                <% for (row of cate) { %>
+                    <option value="<%=row.category%>"><%=row.category%></option>
+                <% } %>
+            </select>
+        </label> 
+        <button class="btn btn-outline-danger">Search</button>
+    </form>
+    <form action="/searchByLikes">
+        <label>Number of Likes: <input type="number" name="min" placeholder="Min" step="1">
+                                <input type="number" name="max" placeholder="Max" step="1">
+                            </label> 
+        <button class="btn btn-outline-danger">Search</button>
+    </form>
+    <%- include("partials/footer.ejs") %>
+    <script src="/js/home.js"></script>
+</body>
+</html>
